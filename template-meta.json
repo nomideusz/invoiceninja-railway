@@ -5,5 +5,6 @@
   "category": "Other",
   "image": "https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5.13.43/public/images/logo.png",
   "card_desc": "Invoice Ninja 5 on MariaDB with PDF rendering, queue worker and scheduler running from the first boot, your admin account created before the site goes public, and nightly backups to a Railway bucket.",
-  "id": "3f4ee809-991b-4325-96b0-87ec1414c6fc"
+  "id": "3f4ee809-991b-4325-96b0-87ec1414c6fc",
+  "published": true
 }
