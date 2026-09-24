@@ -38,7 +38,7 @@ The stack is three pieces: Invoice Ninja (nginx, PHP-FPM, queue worker and sched
 
 **Backups and restore.** Backups appear in the Backups bucket as `invoiceninja-Mon.tar.gz` … `invoiceninja-Sun.tar.gz`, each holding the database, the uploaded files (logos, documents) and the `APP_KEY`. For an extra backup before a risky change, run `invoiceninja-backup` in a `railway ssh` session on the Invoice Ninja service. It replaces today's file. To roll back, run `invoiceninja-restore Mon` (or any other weekday) there. It replaces the database and files with that backup's. Payment gateway, email and bank credentials are stored encrypted with `APP_KEY`: restoring into a new deployment prints the old key, and you set it as the new service's `APP_KEY`.
 
-**Memory.** About 300 MB for Invoice Ninja at rest and up to 700 MB while Chrome renders several PDFs at once, plus about 150 MB for MariaDB. That fits the Trial and Hobby plans. The Free plan's 0.5 GB per service is not enough to render PDFs. On plans with 2 GB or more, two queue workers run instead of one.
+**Memory.** Measured on Railway: about 400 MB for Invoice Ninja at rest and 0.7 GB after Chrome has rendered a burst of PDFs, plus about 170 MB for MariaDB. On plans with less than 2 GB per service, one queue worker runs instead of two, which saves about 100 MB, so the Trial plan's 1 GB is enough. The Free plan's 0.5 GB per service is not enough to render PDFs.
 
 **Custom domain.** Add it in the Invoice Ninja service's Settings → Networking, then set `APP_URL` to `https://<your domain>` and redeploy. Links in emails and PDFs use `APP_URL`.
 
