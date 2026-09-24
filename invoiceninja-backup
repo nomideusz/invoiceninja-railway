@@ -1,0 +1,21 @@
+#!/bin/sh
+# Dump the database and pack it with the stored files (logos, documents, PDFs)
+# and the APP_KEY the data is encrypted with, then upload to the Railway bucket.
+# Keyed by weekday: the bucket always holds the last 7 nightly backups.
+# Run it by hand (railway ssh) before risky changes.
+set -eu
+[ -n "${S3_BUCKET:-}" ] || { echo "invoiceninja-backup: no S3_BUCKET, skipped"; exit 0; }
+
+f=/tmp/invoiceninja-$(date -u +%a).tar.gz
+tmp=$(mktemp -d)
+trap 'rm -rf "$f" "$tmp"' EXIT
+
+MYSQL_PWD="$DB_PASSWORD" mariadb-dump -h "$DB_HOST" -P "${DB_PORT:-3306}" -u "$DB_USERNAME" \
+  --single-transaction --quick --routines "$DB_DATABASE" > "$tmp/database.sql"
+printf '%s\n' "$APP_KEY" > "$tmp/app_key"
+tar -czf "$f" -C "$tmp" database.sql app_key -C /var/www/html/storage app
+# Railway buckets are virtual-hosted style: https://<bucket>.<endpoint host>/<key>
+curl -fsS --aws-sigv4 "aws:amz:${S3_REGION:-auto}:s3" \
+  -u "$S3_ACCESS_KEY_ID:$S3_SECRET_ACCESS_KEY" \
+  -T "$f" "https://$S3_BUCKET.${S3_ENDPOINT#https://}/${f##*/}"
+echo "invoiceninja-backup: uploaded ${f##*/} ($(du -h "$f" | cut -f1))"

@@ -1,0 +1,8 @@
+{
+  "name": "Invoice Ninja 5 | Invoicing with PDFs, Queue and Nightly Backups",
+  "short_name": "Invoice Ninja 5",
+  "description": "Invoices, quotes and payments with working PDFs, queue and nightly backups",
+  "category": "Other",
+  "image": "https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5.13.43/public/images/logo.png",
+  "card_desc": "Invoice Ninja 5 on MariaDB with PDF rendering, queue worker and scheduler running from the first boot, your admin account created before the site goes public, and nightly backups to a Railway bucket."
+}
