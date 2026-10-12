@@ -1,6 +1,6 @@
 # Deploy and Host Invoice Ninja on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/invoice-ninja-5?utm_medium=integration&utm_source=button&utm_campaign=invoice-ninja-5)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/invoice-ninja-5?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=invoice-ninja-5)
 
 [Invoice Ninja](https://invoiceninja.com/) is self-hosted invoicing and billing for freelancers and small businesses: invoices, quotes, recurring invoices and subscriptions, expenses, time tracking, and a client portal where clients view and pay invoices through Stripe, PayPal, GoCardless and more than a dozen other payment gateways. Its source is on GitHub under the Elastic License 2.0. This template runs the official Invoice Ninja 5 image with everything it needs working from the first boot: PDF generation, the queue worker, the scheduler, and nightly backups.
 
