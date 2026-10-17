@@ -10,7 +10,7 @@ The stack is three pieces: Invoice Ninja (nginx, PHP-FPM, queue worker and sched
 
 - **No open setup page.** A fresh Invoice Ninja shows its setup screen to whoever opens the URL first. This template creates your admin account on the first boot, before the site answers, with your email and a generated password. The database has a generated password and no public proxy.
 - **PDFs, emails and recurring invoices work.** The official image renders PDFs with Chrome, which is included and set up here. The queue worker sends emails and builds PDFs in the background, and the scheduler runs recurring invoices, reminders and auto-billing every hour. Queued jobs are stored in MariaDB, so they survive restarts.
-- **Pinned and upgraded on purpose.** The template pins Invoice Ninja 5.13.43 instead of `latest`, so a new upstream release never lands in the middle of your month. Database migrations run on every boot, so updating means bumping the tag and redeploying.
+- **Pinned and upgraded on purpose.** The template pins Invoice Ninja 5.13.48 instead of `latest`, so a new upstream release never lands in the middle of your month. Database migrations run on every boot, so updating means bumping the tag and redeploying.
 - **Nightly backups.** Every night at 03:00 UTC the database, uploaded files and the encryption key go to the bundled bucket, one archive per weekday, so the last 7 days are always there. Restoring is one command.
 
 ## Common Use Cases

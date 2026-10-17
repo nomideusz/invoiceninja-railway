@@ -1,6 +1,6 @@
 # Pinned: a moving tag (:latest, :5) would rebase every deploy of this template at
 # once. Bump deliberately; migrations run on the next boot.
-FROM invoiceninja/invoiceninja-debian:5.13.43
+FROM invoiceninja/invoiceninja-debian:5.13.48
 
 # The official image is PHP-FPM only and expects a separate nginx container that
 # shares the public/ and storage/ volumes. A Railway volume attaches to one
