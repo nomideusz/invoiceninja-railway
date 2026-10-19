@@ -28,7 +28,7 @@ The stack is three pieces: Invoice Ninja (nginx, PHP-FPM, queue worker and sched
 
 - [Invoice Ninja user guide](https://invoiceninja.github.io/en/user-guide/)
 - [Self-hosting docs](https://invoiceninja.github.io/en/self-host-installation/)
-- [Template source on GitHub](https://github.com/nomideusz/invoiceninja-railway)
+- [Template source on GitHub](https://github.com/two-workspaces/invoiceninja)
 
 ### Implementation Details
 
@@ -42,7 +42,7 @@ The stack is three pieces: Invoice Ninja (nginx, PHP-FPM, queue worker and sched
 
 **Custom domain.** Add it in the Invoice Ninja service's Settings → Networking, then set `APP_URL` to `https://<your domain>` and redeploy. Links in emails and PDFs use `APP_URL`.
 
-**Updates.** Change the image tag in the [template's Dockerfile](https://github.com/nomideusz/invoiceninja-railway/blob/main/Dockerfile) (fork it and point the service at your fork) and redeploy. Take a backup first. Migrations run on the next boot. Invoice Ninja's built-in updater is off in Docker installs.
+**Updates.** Change the image tag in the [template's Dockerfile](https://github.com/two-workspaces/invoiceninja/blob/main/Dockerfile) (fork it and point the service at your fork) and redeploy. Take a backup first. Migrations run on the next boot. Invoice Ninja's built-in updater is off in Docker installs.
 
 **Changes from the upstream image, all in the wrapper:**
 
